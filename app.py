@@ -1,6 +1,6 @@
 from data import FetalHealthDataLoader
 from evaluation import EvaluationMetrics
-from model import DecisionTreeModel, LogisticRegressionModel
+from model import DecisionTreeModel, KNNModel, LogisticRegressionModel
 
 
 def main() -> None:
@@ -13,7 +13,7 @@ def main() -> None:
     print(f"classes: {loader.class_names}")
 
     evaluator = EvaluationMetrics(n_classes=len(loader.class_names))
-    for clf in (LogisticRegressionModel(), DecisionTreeModel()):
+    for clf in (LogisticRegressionModel(), DecisionTreeModel(), KNNModel()):
         clf.train(X_train, y_train)
         result = evaluator.compute(
             clf.model_name,
