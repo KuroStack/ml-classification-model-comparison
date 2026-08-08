@@ -1,7 +1,6 @@
-from sklearn.linear_model import LogisticRegression
-
 from data import FetalHealthDataLoader
 from evaluation import EvaluationMetrics
+from model import LogisticRegressionModel
 
 
 def main() -> None:
@@ -13,18 +12,18 @@ def main() -> None:
     print(f"train: {X_train.shape}  test: {X_test.shape}")
     print(f"classes: {loader.class_names}")
 
-    clf = LogisticRegression(max_iter=1000, random_state=42)
-    clf.fit(X_train, y_train)
+    clf = LogisticRegressionModel()
+    clf.train(X_train, y_train)
 
     evaluator = EvaluationMetrics(n_classes=len(loader.class_names))
     result = evaluator.compute(
-        "Logistic Regression",
+        clf.model_name,
         y_test,
         clf.predict(X_test),
         clf.predict_proba(X_test),
         class_names=loader.class_names,
     )
-    print("\nLogistic Regression (test call)")
+    print(f"\n{clf.model_name}")
     for name, value in result.to_dict().items():
         print(f"  {name}: {value}")
     print(result.classification_rep)
