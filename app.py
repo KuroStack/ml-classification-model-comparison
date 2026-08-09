@@ -1,6 +1,12 @@
 from data import FetalHealthDataLoader
 from evaluation import EvaluationMetrics
-from model import DecisionTreeModel, KNNModel, LogisticRegressionModel, NaiveBayesModel
+from model import (
+    DecisionTreeModel,
+    KNNModel,
+    LogisticRegressionModel,
+    NaiveBayesModel,
+    RandomForestModel,
+)
 
 
 def main() -> None:
@@ -18,6 +24,7 @@ def main() -> None:
         DecisionTreeModel(),
         KNNModel(),
         NaiveBayesModel(),
+        RandomForestModel(),
     ):
         clf.train(X_train, y_train)
         result = evaluator.compute(
