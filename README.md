@@ -79,4 +79,5 @@ All five models are trained on the same UCI Cardiotocography (id=193) data. Eval
 | kNN | K = √N → 41. Accuracy 0.8873. Pathological recall 0.66; Suspect F1 ≈ 0.59. |
 | Naive Bayes | Weakest overall (Accuracy 0.8286, MCC 0.6124). Over-predicts Suspect. |
 | Random Forest (Ensemble) | Best on Accuracy 0.9484, AUC 0.9861, F1 0.9474, MCC 0.8567. |
-| Overall winner for the sample dataset? | Random Forest (Ensemble). |
+
+Overall winner for the sample dataset is **Random Forest**
