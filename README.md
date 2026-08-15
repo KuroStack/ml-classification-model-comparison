@@ -70,6 +70,8 @@ All five models are trained on the same UCI Cardiotocography (id=193) data. Eval
 | Naive Bayes | 0.8286 | 0.9316 | 0.8754 | 0.8286 | 0.8423 | 0.6124 |
 | Random Forest (Ensemble) | 0.9484 | 0.9861 | 0.9470 | 0.9484 | 0.9474 | 0.8567 |
 
+### Performance Observation
+
 | ML Model Name | Observation about model performance |
 |---|---|
 | Logistic Regression | Accuracy 0.8967, AUC 0.9702. Suspect is the weak class (F1 ≈ 0.63). |
