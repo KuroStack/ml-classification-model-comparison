@@ -233,6 +233,10 @@ with tab_overview:
 
     st.markdown(DATASET_OVERVIEW_MD)
 
+    st.subheader("All models — evaluation metrics comparison table")
+    st.caption(f"Evaluated on: {eval_label}")
+    st.dataframe(_highlight_best(_metrics_df(all_results)), width=900)
+
 with tab_selected:
     result: MetricsResult = all_results[selected_model]
 
