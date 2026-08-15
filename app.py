@@ -330,9 +330,14 @@ with tab_compare:
     )
     winner = comp_df["F1 Score"].idxmax()
     metric_leads = [m for m in METRIC_COLS if comp_df[m].idxmax() == winner]
+    f1_rank = comp_df["F1 Score"].rank(ascending=False, method="min").astype(int)
 
     for model_name, obs in observations.items():
-        with st.expander(f":material/info: {model_name}", expanded=False):
+        rank = int(f1_rank.loc[model_name])
+        with st.expander(
+            f":material/info: {model_name} (F1 Rank {rank})",
+            expanded=False,
+        ):
             st.write(obs)
 
     st.success(
