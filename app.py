@@ -16,6 +16,7 @@ from config import (
     SIDEBAR_TITLE,
     UPLOAD_CAPTION,
     UPLOAD_NO_TARGET_WARNING,
+    UPLOAD_PROMPT,
 )
 from data import FetalHealthDataLoader
 from evaluation import EvaluationMetrics
@@ -102,15 +103,15 @@ with st.sidebar:
 st.title(PAGE_HEADING)
 
 with st.spinner("Loading dataset…"):
-    loader, X_train, X_test, y_train, y_test = _load_data()
+    loader, X_train, _X_test, y_train, _y_test = _load_data()
     n_classes = len(loader.class_names)
     class_names = loader.class_names
 
 with st.spinner("Training models…"):
     model_instances = _train_all_models(X_train, y_train, n_classes)
 
-X_eval, y_eval = X_test, y_test
-eval_label = "held-out test set (20 %)"
+X_eval, y_eval = None, None
+eval_label = ""
 
 if uploaded_file is not None:
     try:
@@ -123,6 +124,10 @@ if uploaded_file is not None:
             st.sidebar.warning(UPLOAD_NO_TARGET_WARNING)
     except Exception as exc:
         st.sidebar.error(f"Could not parse uploaded CSV: {exc}")
+
+if X_eval is None:
+    st.info(UPLOAD_PROMPT)
+    st.stop()
 
 model = model_instances[selected_model]
 y_pred = model.predict(X_eval)

@@ -15,9 +15,10 @@ MODEL_NAMES = [
     "Random Forest (Ensemble)",
 ]
 
+UPLOAD_PROMPT = "Upload `test_data.csv` in the sidebar to evaluate the selected model."
+
 UPLOAD_NO_TARGET_WARNING = (
-    "Uploaded CSV has no recognisable target column (`fetal_health` or `NSP`). "
-    "Falling back to the held-out test set."
+    "Uploaded CSV has no recognisable target column (`fetal_health` or `NSP`)."
 )
 
 CONFUSION_MATRIX_CAPTION = (
