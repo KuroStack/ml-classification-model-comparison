@@ -24,7 +24,7 @@ The dataset consists of measurements of fetal heart rate (FHR) and uterine contr
 
 2126 fetal cardiotocograms (CTGs) were automatically processed and the respective diagnostic features measured. The CTGs were also classified by three expert obstetricians and a consensus classification label assigned to each of them. Classification was both with respect to a morphologic pattern (A, B, C, …) and to a fetal state (N, S, P). Therefore the dataset can be used either for 10-class or 3-class experiments.
 
-This assignment uses the **3-class** target **NSP** (N = Normal, S = Suspect, P = Pathological). The 10-class **CLASS** column is not used.
+This assignment uses the **3-class** target **NSP** (N = Normal, S = Suspect, P = Pathological).
 
 UCI variables table (Description and Units are empty on the source page):
 
@@ -53,12 +53,6 @@ UCI variables table (Description and Units are empty on the source page):
 | Tendency | Feature | Integer | no |
 | CLASS | Target | Integer | no |
 | NSP | Target | Integer | no |
-
-**Our preprocessing :**
-- Median impute is in the pipeline but UCI reports no missing values
-- Z-score standardisation: $x_{std} = (x - \mu) / \sigma$ (fit on train only)
-- Train / Test split: 80 % / 20 %, stratified
-- Multiclass metrics: weighted Precision / Recall / F1; one-vs-rest AUC
 
 ## c. Github Repository Link
 
